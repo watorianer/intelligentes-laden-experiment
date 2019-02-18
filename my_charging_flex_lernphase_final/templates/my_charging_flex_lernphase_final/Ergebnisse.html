@@ -1,0 +1,121 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Ihnen werden nun drei verschiedene Szenarien vorgestellt.<br>
+        <b>Diese Szenarien sollen Ihnen ein Gefühl für verschiedene Ausgänge, die das Experiment nehmen kann, geben.<br>
+        In der nächsten Phase des Experiments wird nur ein Szenario - unabhängig von den hier vorgestellten - realisiert.</b>
+    </p>
+
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+    .tg td{padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+    .tg th{padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+    .tg .tg-7fle{font-weight:bold;background-color:#efefef;text-align:center;vertical-align:top;width:10%}
+    .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:center}
+    .tg .tg-0lax{text-align:left;vertical-align:top;width:30%}
+    </style>
+    <table class="tg">
+      <tr>
+        <th class="tg-amwm"></th>
+        <th class="tg-amwm">Szenario 1</th>
+        <th class="tg-amwm">Szenario 2</th>
+        <th class="tg-amwm">Szenario 3</th>
+      </tr>
+      <tr>
+        <td class="tg-7fle">Ihre Einstellung</td>
+        <td class="tg-0lax"><p>Sie wollten {{ player.mindestreichweite_sofort }} Kilometer sofort aufladen.<br>
+              Sie wollten {{ player.mindestreichweite_spaeter }} Kilometer bis zur Abfahrt aufladen.<br>
+              Sie haben als Abfahrtszeitpunkt {{ player.gewuenschte_abfahrt_hours }}:<span id="gewuenschte_abfahrt_minutes1"></span> Uhr angegeben.<br>
+              Mit diesen Einstellungen haben Sie {{ player.ladeflexibilitaet }} % Ladeflexibilität freigegeben</p></td>
+        <td class="tg-0lax"><p>Sie wollten {{ player.mindestreichweite_sofort }} Kilometer sofort aufladen.<br>
+              Sie wollten {{ player.mindestreichweite_spaeter }} Kilometer bis zur Abfahrt aufladen.<br>
+              Sie haben als Abfahrtszeitpunkt {{ player.gewuenschte_abfahrt_hours }}:<span id="gewuenschte_abfahrt_minutes2"></span> Uhr angegeben.<br>
+              Mit diesen Einstellungen haben Sie {{ player.ladeflexibilitaet }} % Ladeflexibilität freigegeben</p></td>
+        <td class="tg-0lax"><p>Sie wollten {{ player.mindestreichweite_sofort }} Kilometer sofort aufladen.<br>
+              Sie wollten {{ player.mindestreichweite_spaeter }} Kilometer bis zur Abfahrt aufladen.<br>
+              Sie haben als Abfahrtszeitpunkt {{ player.gewuenschte_abfahrt_hours }}:<span id="gewuenschte_abfahrt_minutes3"></span> Uhr angegeben.<br>
+              Mit diesen Einstellungen haben Sie {{ player.ladeflexibilitaet }} % Ladeflexibilität freigegeben</p></td>
+      </tr>
+      <tr>
+        <td class="tg-7fle">Zu fahrende Kilometer und tatsächliche Abfahrtszeit</td>
+          <td class="tg-0lax"><p>Sie müssen um {{ player.hours1 }}:<span id="minutes1"></span> Uhr losfahren.
+          Daher konnten Sie {{ player.geladene_kilometer1 }} Kilometer aufladen.
+          Sie müssen {{ Constants.to_drive1 }} Kilometer fahren.</p></td>
+          <td class="tg-0lax"><p>Sie müssen um {{ player.hours2 }}:<span id="minutes2"></span> Uhr losfahren.
+          Daher konnten Sie {{ player.geladene_kilometer2 }} Kilometer aufladen.
+          Sie müssen {{ Constants.to_drive2 }} Kilometer fahren.</p></td>
+        <td class="tg-0lax"><p>Sie müssen um {{ player.hours3 }}:<span id="minutes3"></span> Uhr losfahren.
+          Daher konnten Sie {{ player.geladene_kilometer3 }} Kilometer aufladen.
+          Sie müssen {{ Constants.to_drive3 }} Kilometer fahren.</p></td>
+      </tr>
+      <tr>
+        <td class="tg-7fle">Ergebnisse</td>
+        <td class="tg-0lax"><p>{% if player.geladene_kilometer1 >= Constants.to_drive1 %}
+            Die geladenen Kilometer haben für die Strecke ausgereicht. Sie haben {{ player.punkte1 }} Punkte gesammelt.
+        {% else %}
+            Die geladenen Kilometer haben für die Strecke leider nicht ausgereicht. Ihnen wurden Punkte abgezogen. Sie haben {{ player.punkte1 }} Punkte gesammelt.
+        {% endif %}</p></td>
+        <td class="tg-0lax"><p>{% if player.geladene_kilometer2 >= Constants.to_drive2 %}
+            Die geladenen Kilometer haben für die Strecke ausgereicht. Sie haben {{ player.punkte2 }} Punkte gesammelt.
+        {% else %}
+            Die geladenen Kilometer haben für die Strecke leider nicht ausgereicht. Ihnen wurden Punkte abgezogen. Sie haben {{ player.punkte2 }} Punkte gesammelt.
+        {% endif %}</p></td>
+        <td class="tg-0lax"><p>{% if player.geladene_kilometer3 >= Constants.to_drive3 %}
+            Die geladenen Kilometer haben für die Strecke ausgereicht. Sie haben {{ player.punkte3 }} Punkte gesammelt.
+        {% else %}
+            Die geladenen Kilometer haben für die Strecke leider nicht ausgereicht. Ihnen wurden Punkte abgezogen. Sie haben {{ player.punkte3 }} Punkte gesammelt.
+        {% endif %}</p></td>
+      </tr>
+    </table>
+    <br>
+    <br>
+    {% next_button %}
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(function() {
+            var gewuenschte_abfahrt_minutes1_selector = document.getElementById('gewuenschte_abfahrt_minutes1');
+            var gewuenschte_abfahrt_minutes2_selector = document.getElementById('gewuenschte_abfahrt_minutes2');
+            var gewuenschte_abfahrt_minutes3_selector = document.getElementById('gewuenschte_abfahrt_minutes3');
+
+            var minutes1_selector = document.getElementById('minutes1');
+            var minutes2_selector = document.getElementById('minutes2');
+            var minutes3_selector = document.getElementById('minutes3');
+
+            var gewuenschte_abfahrt_minutes1 = {{ player.gewuenschte_abfahrt_minutes|json }};
+            var gewuenschte_abfahrt_minutes2 = {{ player.gewuenschte_abfahrt_minutes|json }};
+            var gewuenschte_abfahrt_minutes3 = {{ player.gewuenschte_abfahrt_minutes|json }};
+
+            var minutes1 = {{ player.minutes1|json }};
+            var minutes2 = {{ player.minutes2|json }};
+            var minutes3 = {{ player.minutes3|json }};
+
+            var gewuenschte_abfahrt_minutes1_string = gewuenschte_abfahrt_minutes1.toString();
+            var gewuenschte_abfahrt_minutes2_string = gewuenschte_abfahrt_minutes2.toString();
+            var gewuenschte_abfahrt_minutes3_string = gewuenschte_abfahrt_minutes3.toString();
+
+            var minutes1_string = minutes1.toString();
+            var minutes2_string = minutes2.toString();
+            var minutes3_string = minutes3.toString();
+
+
+            gewuenschte_abfahrt_minutes1_selector.innerHTML = gewuenschte_abfahrt_minutes1_string.padStart(2, '0');
+            gewuenschte_abfahrt_minutes2_selector.innerHTML = gewuenschte_abfahrt_minutes2_string.padStart(2, '0');
+            gewuenschte_abfahrt_minutes3_selector.innerHTML = gewuenschte_abfahrt_minutes3_string.padStart(2, '0');
+
+            minutes1_selector.innerHTML = minutes1_string.padStart(2, '0');
+            minutes2_selector.innerHTML = minutes2_string.padStart(2, '0');
+            minutes3_selector.innerHTML = minutes3_string.padStart(2, '0');
+
+        });
+    </script>
+{% endblock %}
+
+

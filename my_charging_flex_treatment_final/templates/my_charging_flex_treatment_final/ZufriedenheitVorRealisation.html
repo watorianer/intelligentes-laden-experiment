@@ -1,0 +1,130 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <style type="text/css">
+    tr:hover {background-color: #f5f5f5;}
+    .risk .question{border-bottom: 1px solid #ddd}
+    .risk .td-choice-label{width:14%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .risk .td-choice-tag{padding:10px 0px 30px 20px;width:14%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    </style>
+
+    <table class="risk">
+        <tr class="question">
+            {{ form.crt_zufriedenheit_vor_realisation.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_zufriedenheit_vor_realisation.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_zufriedenheit_vor_realisation.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_zufriedenheit_vor_realisation.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_zufriedenheit_vor_realisation.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_zufriedenheit_vor_realisation.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_zufriedenheit_vor_realisation.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_zufriedenheit_vor_realisation.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_zufriedenheit_vor_realisation.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_zufriedenheit_vor_realisation.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_zufriedenheit_vor_realisation.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_zufriedenheit_vor_realisation.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_zufriedenheit_vor_realisation.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_zufriedenheit_vor_realisation.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_zufriedenheit_vor_realisation.6.tag }}
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    <table class="risk">
+        <tr class="question">
+            {{ form.crt_grafik_verstaendnis.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_grafik_verstaendnis.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_grafik_verstaendnis.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_grafik_verstaendnis.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_grafik_verstaendnis.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_grafik_verstaendnis.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_grafik_verstaendnis.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_grafik_verstaendnis.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_grafik_verstaendnis.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_grafik_verstaendnis.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_grafik_verstaendnis.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_grafik_verstaendnis.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_grafik_verstaendnis.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_grafik_verstaendnis.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_grafik_verstaendnis.6.tag }}
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    {% next_button %}
+{% endblock %}
+
+

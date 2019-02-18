@@ -1,0 +1,49 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Sie wollten {{ player.mindestreichweite_sofort }} Kilometer sofort aufladen.<br>
+        Sie wollten {{ player.mindestreichweite_spaeter }} Kilometer bis zur Abfahrt aufladen.<br>
+        Sie haben als Abfahrtszeitpunkt {{ player.gewuenschte_abfahrt_hours }}:<span id="gewuenschte_abfahrt_minutes"></span>
+        Uhr angegeben.<br>
+        Mit diesen Einstellungen haben Sie {{ player.ladeflexibilitaet }} % Ladeflexibilität freigegeben.
+    </p>
+
+    <p>
+        Sie müssen um {{ player.hours }}:<span id="minutes"></span> Uhr losfahren.<br>
+        Daher konnten Sie {{ player.geladene_kilometer }} Kilometer aufladen.<br>
+        Sie müssen {{ Constants.to_drive }} Kilometer fahren.
+    </p>
+        {% if player.geladene_kilometer >= Constants.to_drive %}
+            Die geladenen Kilometer haben für die Strecke ausgereicht. Sie haben {{ player.payoff }} gesammelt.<br>
+        {% else %}
+            Die geladenen Kilometer haben für die Strecke leider nicht ausgereicht. Ihnen wurden Punkte abgezogen. Sie
+            haben {{ player.payoff }} gesammelt.<br>
+        {% endif %}
+    {% next_button %}
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(function() {
+            var gewuenschte_abfahrt_minutes_selector = document.getElementById('gewuenschte_abfahrt_minutes');
+            var minutes_selector = document.getElementById('minutes');
+
+            var gewuenschte_abfahrt_minutes = {{ player.gewuenschte_abfahrt_minutes|json }};
+            var minutes = {{ player.minutes|json }};
+
+            var gewuenschte_abfahrt_minutes_string = gewuenschte_abfahrt_minutes.toString();
+            var minutes_string = minutes.toString();
+
+            gewuenschte_abfahrt_minutes_selector.innerHTML = gewuenschte_abfahrt_minutes_string.padStart(2, '0');
+            minutes_selector.innerHTML = minutes_string.padStart(2, '0');
+        });
+    </script>
+{% endblock %}
+
+

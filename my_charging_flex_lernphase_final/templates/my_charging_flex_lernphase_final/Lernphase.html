@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    {% include "my_charging_flex_lernphase_final/Szenario.html" %}
+
+    <p>
+        <b>Diese Phase des Experiments soll Sie nur mit dessen Ablauf vertraut machen.
+        <br>
+        Die von Ihnen gesammelten Punkte werden am Ende der Lernphase zurückgesetzt und zählen daher nichts.</b>
+        <br>
+        <br>
+        Bitte geben Sie an wie viele Kilometer Sie aufladen möchten.<br>
+        <br>
+        Je weniger Kilometer Sie aufladen bzw. je mehr Zeit Sie für den Ladevorgang zur Verfügung stellen desto mehr
+        Ladeflexibilität stellen Sie für ein intelligentes Laden bereit.<br>
+        Bedenken Sie jedoch, dass die geladenen Kilometer ausreichen müssen um eine Strecke, die unabhängig von Ihren
+        Einstellungen gezogen wird, zu fahren.<br>
+    </p>
+
+    {% formfield player.mindestreichweite_sofort  %}
+    {% formfield player.mindestreichweite_spaeter %}
+    {% formfield player.gewuenschte_abfahrt %}
+
+    {% next_button %}
+{% endblock %}
+
+
+

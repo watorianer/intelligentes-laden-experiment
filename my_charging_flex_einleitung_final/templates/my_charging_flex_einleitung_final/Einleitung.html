@@ -1,0 +1,67 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Einleitung
+{% endblock %}
+
+{% block content %}
+    <p>
+        Liebe Teilnehmerin, lieber Teilnehmer,<br>
+        <br>
+        wir danken Ihnen für Ihr Interesse an unserer Arbeit. In diesem wissenschaftlichen Experiment geht es um das
+        intelligenten Laden von E-PKWs.<br>
+        <br>
+        Beim Einsatz von intelligenten Laden passt sich die Laderate (gemessen in Kilometer pro Stunde) Ihres E-PKWs
+        dynamisch an. Hierdurch können Kosten reduziert, das Netz stabilisiert und mehr erneuerbare Energien integriert
+        werden.  Im Gegenzug erhöht  sich die Dauer des Ladevorgangs im Vergleich zu einem ungesteuerten Ladevorgang.
+        Deswegen muss sich der Nutzer entscheiden, wie schnell und wie lange er sein Auto laden möchte, um seine
+        Mobilitätsbedürfnisse zu erfüllen.
+        <br>
+        <br>
+        Dieses Experiment behandelt das folgende Szenario: Sie stellen nach der letzten Fahrt eines Tages Ihren E-PKW zu
+        Hause ab, schließen ihn an eine Ladestation an und stellen Ihre Ladewünsche ein. Je weniger Kilometer Sie
+        aufladen bzw. je mehr Zeit Sie für den Ladevorgang zur Verfügung stellen desto mehr Ladeflexibilität stellen Sie
+        für ein intelligentes Laden bereit.
+        <br>
+        <br>
+        Nachdem Sie diese Einstellung vorgenommen haben, wird der Ladevorgang mit den von Ihnen festgelegten
+        Einstellungen simuliert. Unabhängig von Ihren Einstellungen wird eine Abfahrtszeit und Strecke realisiert. Informationen über die
+        Verteilung der möglichen Strecken und Abfahrtszeiten werden Ihnen in Form einer Grafik angezeigt.
+        <br>
+        <br>
+        Spätestens zur realisierten Abfahrtszeit wird der Ladevorgang beendet. Es kann daher vorkommen, dass weniger Kilometer
+        aufgeladen werden, als Sie in Ihren Einstellungen gewünscht haben.
+        <br>
+        <br>
+        Sollten die aufgeladenen Kilometer ausreichen, um die realisierte Strecke zu fahren, erhalten Sie Punkte in Höhe
+        ihrer freigegebenen Ladeflexibilität. Falls nicht, werden Ihnen entsprechend Punkte abgezogen.
+        <br>
+        <br>
+        Das Experiment ist in drei Phasen unterteilt. In einer Lernphase können Sie sich mit dem Experiment vertraut
+        machen. Diese hat noch keinen Einfluss auf die finale Punktezahl und Ihre Auszahlung. In der zweiten Phase
+        spielen Sie das Experiment wie oben beschrieben. Beenden Sie das Experiment erhalten sie unabhängig der von
+        Ihnen erspielten Punkte 1 €. Zusätzlich erhalten Sie für jeden erspielten Punkt 0,5 Cent. Sollten
+        Sie also null oder weniger Punkte erreichen erhalten Sie trotzdem 1 €. Beide Phasen haben jeweils eine Runde.
+        Zuletzt folgen einige Fragen zu ihren demografischen Daten.
+        <br>
+        <br>
+        Bitte benutzen Sie ausschließlich die Schaltflächen im Bereich des Experiments und klicken Sie nicht auf die
+        Adressleiste oder die Pfeiltaste im Browser.
+        <br>
+        <br>
+        Das gesamte Experiment wird ca. 15 Minuten dauern. Bitte nehmen Sie sich dafür ausreichend Zeit.
+        <br>
+        <br>
+        Das Experiment wird in deutscher Sprache durchgeführt. D.h. Sie sollten entweder Muttersprachler sein oder über
+        gleichwertige Sprachkenntnisse verfügen.
+        <br>
+        <br>
+        Wenn Sie mit den Bedingungen einverstanden sind, klicken Sie bitte auf "Weiter".
+
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+

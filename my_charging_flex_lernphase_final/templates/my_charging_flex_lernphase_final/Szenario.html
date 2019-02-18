@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Szenario
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Stellen Sie sich vor, Sie haben einen E-PKW mit einer maximalen Reichweite von {{ Constants.max_kilometer }}
+        Kilometer. Sie schließen diesen E-PKW um 0 Uhr an Ihre Ladestation zu Hause an. Der Ladestand liegt bei {{ Constants.ladestand }}
+        % was einer Reichweite von {{ Constants.aktuell_kilometer }} km entspricht. Die maximale Laderate mit der die
+        Batterie aufgeladen werden kann beträgt {{ Constants.max_laderate }} Kilometer pro Stunde.
+    </p>
+    <p>
+        Sie haben am nächsten Tag keine Möglichkeit Ihren E-PKW nochmal aufzuladen.
+    </p>
+    <p>
+        Sie haben sich immer aufgeschrieben wie viele Kilometer Sie an einem Tag fahren und wann sie losfahren mussten.
+        Diese Informationen gibt die folgende Grafik wieder.
+    </p>
+
+    <p>
+        <img src="{% static "global/Experiment.svg" %}"/>
+    </p>
+
+    <p>
+        Nehmen Sie nun die Einstellungen vor mit denen Sie Ihren E-PKW aufladen möchten. Dies können Sie über drei
+        Schieberegler vornehmen:
+    </p>
+
+    <p>
+        <b>"Mindestreichweite sofort":</b> Die Reichweite, auf die Ihr E-PKW direkt ohne Unterbrechungen geladen wird.
+        Ihr E-PKW wird dabei mit der maximal möglichen Ladeleistung von {{ Constants.max_laderate }} Kilometer
+        pro Stunde aufgeladen.
+    </p>
+
+    <p>
+        <b>"Mindestreichweite später":</b> Die Reichweite, die Ihr E-PKW mindestens bis zur angegebene Abfahrtszeit
+        haben soll. Ihr E-PKW wird dabei in einem flexiblen Modus geladen, d.h. der Ladevorgang
+        kann kurzzeitig unterbrochen werden.
+    </p>
+
+    <p>
+        <b>"Abfahrtszeit":</b> Die Uhrzeit, bis wann Ihr E-PKW die "Mindestreichweite später" geladen haben muss.
+    </p>
+
+{% endblock %}
+
+

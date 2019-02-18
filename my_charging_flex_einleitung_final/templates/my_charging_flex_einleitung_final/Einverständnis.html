@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Einwilligungserklärung
+{% endblock %}
+
+{% block content %}
+    <p>
+        Hiermit bestätigen Sie, dass sie umfassend über die Ziele und Vorgehen des Experiments aufgeklärt wurden und Sie
+        diese verstanden haben.
+        <br>
+        <br>
+        Weiterhin ist Ihnen bekannt, dass dieses Experiment in erster Linie der Wissenserweiterung dient und
+        gegebenenfalls auch keinen persönlichen Vorteil für Sie bringen kann.
+        <br>
+        <br>
+        Die im Rahmen dieses Experiments erhobenen Daten werden vertraulich behandelt. Ihnen ist bewusst, dass die
+        Ergebnisse des Experiments als wissenschaftliche Publikation veröffentlicht werden können. Dies geschieht in
+        anonymisierter Form, d. h. ohne, dass Ihre Daten Ihrer Person zugeordnet werden können. Ihre Daten werden
+        anonymisiert gespeichert.
+        <br>
+        <br>
+        Die Teilnahme an dem Experiment ist freiwillig und kann jedezeit ohne Nennung von Gründen abgebrochen werden.
+        Dabei entstehen Ihnen keine persönlichen Nachteile.
+        <br>
+        <br>
+        Bei Fragen und Anmerkungen zu diesem Experiment wenden Sie sich bitte an Martin Wolff. Erreichbar unter der
+        E-Mail-Adresse experiment.wolff@web.de.
+        <br>
+        <br>
+        Mit einem Klick auf "Weiter" bestätigen Sie, dass Sie diese Informationen gelesen und verstanden haben.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

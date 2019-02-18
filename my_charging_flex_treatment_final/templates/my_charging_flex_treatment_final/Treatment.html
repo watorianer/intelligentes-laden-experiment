@@ -1,0 +1,168 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load get_value %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    {% include "my_charging_flex_treatment_final/Szenario.html" %}
+
+    <p>
+        Bitte geben Sie an wie viele Kilometer Sie aufladen möchten.<br>
+        <br>
+        Je weniger Kilometer Sie aufladen bzw. je mehr Zeit Sie für den Ladevorgang zur Verfügung stellen desto mehr
+        Ladeflexibilität stellen Sie für ein intelligentes Laden bereit.<br>
+        Bedenken Sie jedoch, dass die geladenen Kilometer ausreichen müssen um eine Strecke, die unabhängig von Ihren
+        Einstellungen gezogen wird, zu fahren.<br>
+    </p>
+
+    {% formfield player.mindestreichweite_sofort  %}
+    {% formfield player.mindestreichweite_spaeter %}
+    {% formfield player.gewuenschte_abfahrt %}
+
+    {% if player.treatment_group == Constants.dss %}
+        <b>Falls die aufgeladenen Kilometer für die am nächsten Tag realisierte Strecke ausreichen erhalten Sie <span id="ladeflex"></span> Punkte.<br>
+            Bei <span id="gewinn_prozent">{{ player.aktuelle_gewinnchance }}</span> von 100 Personen haben die aktuellen
+            Einstellungen ausgereicht die realisierten Kilometer am nächsten Tag zu fahren.</b>
+    {% endif %}
+
+
+    {% next_button %}
+{% endblock %}
+
+{% block scripts %}
+    {% if player.treatment_group == Constants.nudge %}
+        <script>
+            $(function() {
+                var mindestreichweite_sofort = document.getElementById('id_mindestreichweite_sofort');
+                var mindestreichweite_spaeter = document.getElementById('id_mindestreichweite_spaeter');
+                var gewuenschte_abfahrt = document.getElementById('id_gewuenschte_abfahrt');
+
+                var slider_values = document.getElementsByClassName('input-group-text');
+
+                function set_initial_slider() {
+                    mindestreichweite_sofort.value = 32;
+                    mindestreichweite_spaeter.value = 124;
+                    gewuenschte_abfahrt.value = 10;
+
+                    for (i=0; i < slider_values.length; i++) {
+                        if(i === 0) {
+                            slider_values[i].innerHTML = 32;
+                        }
+                        else if (i === 1) {
+                            slider_values[i].innerHTML = 124;
+                        } else {
+                            slider_values[i].innerHTML = 10;
+                        }
+                    }
+                }
+                set_initial_slider();
+            });
+        </script>
+    {% endif %}
+
+    {% if player.treatment_group == Constants.dss %}
+        <script>
+            $(function() {
+
+                var mindestreichweite_sofort_selector = document.getElementById('id_mindestreichweite_sofort');
+                var mindestreichweite_spaeter_selector = document.getElementById('id_mindestreichweite_spaeter');
+                var gewuenschte_abfahrt_selector = document.getElementById('id_gewuenschte_abfahrt');
+
+                var gewinn_prozent_selector = document.getElementById('gewinn_prozent');
+                var ladeflexibilitaet = document.getElementById('ladeflex');
+
+                var ladedauer_max = Math.min((({{ Constants.max_kilometer|json }}-{{ Constants.aktuell_kilometer|json }})/{{ Constants.max_laderate|json }}), {{ Constants.abfahrt|json }});
+
+                var index;
+
+                var ws_scheme = window.location.protocol == 'https:' ? 'wss' : 'ws';
+                var ws_path = ws_scheme + '://' + window.location.host + "/indextracker/{{ player.id }}";
+                var socket = new ReconnectingWebSocket(ws_path);
+
+
+
+                function send_initial_index() {
+                    index = mindestreichweite_sofort*12048 + (mindestreichweite_spaeter*48) +
+                    ((gewuenschte_abfahrt-0.5)*2);
+                    console.log(index);
+                    console.log(socket.readyState);
+                    socket.onopen = () => {
+                        socket.send(index);
+                    }
+                }
+
+                function send_index() {
+                    index = mindestreichweite_sofort*12048 + (mindestreichweite_spaeter*48) +
+                    ((gewuenschte_abfahrt-0.5)*2);
+                    console.log(index);
+                    console.log(socket.readyState);
+                    if (socket.readyState === WebSocket.OPEN) {
+                        socket.send(index);
+                    }
+                }
+
+                mindestreichweite_sofort = mindestreichweite_sofort_selector.value;
+                mindestreichweite_spaeter = mindestreichweite_spaeter_selector.value;
+                gewuenschte_abfahrt = gewuenschte_abfahrt_selector.value;
+                send_initial_index();
+                calculate_ladeflex();
+
+                mindestreichweite_sofort_selector.onchange = function() {
+                    mindestreichweite_sofort = mindestreichweite_sofort_selector.value;
+                    mindestreichweite_spaeter = mindestreichweite_spaeter_selector.value;
+                    gewuenschte_abfahrt = gewuenschte_abfahrt_selector.value;
+                    send_index();
+                    calculate_ladeflex()
+                };
+
+                mindestreichweite_spaeter_selector.onchange = function() {
+                    mindestreichweite_sofort = mindestreichweite_sofort_selector.value;
+                    mindestreichweite_spaeter = mindestreichweite_spaeter_selector.value;
+                    gewuenschte_abfahrt = gewuenschte_abfahrt_selector.value;
+                    send_index();
+                    calculate_ladeflex()
+                };
+
+                gewuenschte_abfahrt_selector.onchange = function() {
+                    mindestreichweite_sofort = mindestreichweite_sofort_selector.value;
+                    mindestreichweite_spaeter = mindestreichweite_spaeter_selector.value;
+                    gewuenschte_abfahrt = gewuenschte_abfahrt_selector.value;
+                    send_index();
+                    calculate_ladeflex()
+                };
+
+                socket.onmessage = function (event) {
+                    var obj = jQuery.parseJSON(event.data);
+                    obj = Math.round(obj);
+                    gewinn_prozent_selector.innerHTML = obj;
+                    console.log('Message received');
+                    console.log(obj);
+                };
+
+                function calculate_ladeflex() {
+                    gewuenschte_abfahrt = gewuenschte_abfahrt_selector.value;
+                    dauer_mindestreichweite_sofort =Math.min((mindestreichweite_sofort -{{ Constants.aktuell_kilometer|json }})/{{ Constants.max_laderate|json }}, gewuenschte_abfahrt);
+
+                    if (dauer_mindestreichweite_sofort == gewuenschte_abfahrt) {
+                        ladeflexibilitaet.innerHTML = 0;
+                    } else {
+                        gewichtungsfaktor_zaehler = Math.max(Math.max(mindestreichweite_spaeter - mindestreichweite_sofort, 0)/(gewuenschte_abfahrt - dauer_mindestreichweite_sofort), 0);
+                        gewichtungsfaktor = gewichtungsfaktor_zaehler/{{ Constants.max_laderate|json }};
+                        if (gewichtungsfaktor >= 1) {
+                            ladeflexibilitaet.innerHTML = 0;
+                        } else {
+                            dauer_mindestreichweite_spaeter = Math.max((mindestreichweite_spaeter - mindestreichweite_sofort)/{{ Constants.max_laderate|json }}, 0);
+                            ladeflexibilitaet.innerHTML = Math.round((1 - ((dauer_mindestreichweite_sofort+gewichtungsfaktor*dauer_mindestreichweite_spaeter)/ladedauer_max))*100);
+                        }
+                    }
+                }
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+

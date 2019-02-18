@@ -1,0 +1,730 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Demografische Angaben
+{% endblock %}
+
+{% block content %}
+    <p>
+        Sie haben es fast geschafft! Wir bitten Sie nur noch die folgenden Fragen zu beantworten. Wenn Sie fertig sind
+        gelangen Sie mit einem Klick auf "Weiter" zurück zu Amazon und erhalten Ihre Auszahlung.
+    </p>
+    <br>
+    <br>
+    <p>
+        Die folgenden Fragen beziehen sich auf die Nutzung eines Systems zum intelligenten Laden von E-PKWs, bei dem
+        nicht sofort auf voller Leistung sondern flexibel geladen und dadurch Flexibilität bereitgestellt wird.
+    </p>
+
+    <style type="text/css">
+    tr:hover {background-color: #f5f5f5;}
+    .question{border-bottom: 1px solid #ddd}
+    .td-choice-label{width:14%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .td-choice-tag{padding:10px 0px 30px 20px;width:14%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+
+    .normen .question{border-bottom: 1px solid #ddd}
+    .normen .td-question{width:20%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .normen .td-choice-label{width:11.42%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .normen .td-choice-tag{padding:10px 0px 30px 20px;width:11.42%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+
+    .kontrolle .question{border-bottom: 1px solid #ddd}
+    .kontrolle .td-question{width:20%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .kontrolle .td-choice-label{width:11.42%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .kontrolle .td-choice-tag{padding:10px 0px 30px 20px;width:11.42%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+
+    .absicht .question{border-bottom: 1px solid #ddd}
+    .absicht .td-question{width:20%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .absicht .td-choice-label{width:11.42%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .absicht .td-choice-tag{padding:10px 0px 30px 20px;width:11.42%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    </style>
+
+    <table class="einstellung1">
+        <tr class="question">
+            {{ form.crt_tpb_einstellung1.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung1.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung1.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung1.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung1.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung1.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung1.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung1.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung1.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung1.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung1.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung1.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung1.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung1.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung1.6.tag }}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="einstellung2">
+        <tr class="question">
+            {{ form.crt_tpb_einstellung2.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung2.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung2.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung2.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung2.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung2.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung2.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung2.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung2.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung2.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung2.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung2.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung2.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung2.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung2.6.tag }}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="einstellung3">
+        <tr class="question">
+            {{ form.crt_tpb_einstellung3.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung3.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung3.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung3.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung3.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung3.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung3.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung3.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung3.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung3.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung3.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung3.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung3.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung3.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung3.6.tag }}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table width="100%" class="einstellung4">
+        <tr class="question">
+            {{ form.crt_tpb_einstellung4.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung4.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung4.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung4.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung4.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung4.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung4.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung4.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung4.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung4.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung4.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung4.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung4.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung4.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung4.6.tag }}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table class="einstellung5">
+        <tr class="question">
+            {{ form.crt_tpb_einstellung5.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung5.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung5.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung5.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung5.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung5.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung5.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_einstellung5.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung5.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung5.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung5.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung5.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung5.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung5.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_einstellung5.6.tag }}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <table class="normen">
+        <tr class="choices">
+            <td class="td-question">
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_normen1.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_normen1.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_normen1.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_normen1.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_normen1.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_normen1.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_normen1.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_normen1.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen1.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen1.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen1.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen1.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen1.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen1.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen1.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_normen2.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen2.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen2.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen2.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen2.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen2.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen2.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen2.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_normen3.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen3.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen3.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen3.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen3.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen3.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen3.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen3.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_normen4.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen4.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen4.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen4.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen4.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen4.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen4.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen4.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_normen5.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen5.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen5.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen5.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen5.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen5.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen5.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_normen5.6.tag }}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <table class="kontrolle">
+        <tr class="choices">
+            <td class="td-question">
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_kontrolle1.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_kontrolle1.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_kontrolle1.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_kontrolle1.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_kontrolle1.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_kontrolle1.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_kontrolle1.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_kontrolle1.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle1.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle1.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle1.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle1.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle1.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle1.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle1.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_kontrolle2.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle2.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle2.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle2.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle2.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle2.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle2.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle2.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_kontrolle3.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle3.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle3.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle3.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle3.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle3.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle3.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle3.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_kontrolle4.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle4.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle4.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle4.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle4.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle4.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle4.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle4.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_kontrolle5.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle5.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle5.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle5.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle5.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle5.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle5.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_kontrolle5.6.tag }}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <table class="absicht">
+        <tr class="choices">
+            <td class="td-question">
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_absicht1.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_absicht1.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_absicht1.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_absicht1.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_absicht1.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_absicht1.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_tpb_absicht1.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_absicht1.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht1.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht1.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht1.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht1.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht1.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht1.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht1.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_absicht2.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht2.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht2.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht2.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht2.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht2.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht2.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht2.6.tag }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-question">
+                {{ form.crt_tpb_absicht3.label }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht3.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht3.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht3.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht3.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht3.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht3.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_tpb_absicht3.6.tag }}
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    {% formfield player.crt_kommentar %}
+    {% next_button %}
+{% endblock %}

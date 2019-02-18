@@ -1,0 +1,189 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Demografische Angaben
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Vielen Dank für Ihre Teilnahme an diesem Experiment.
+    </p>
+    {% if participant.payoff <= 0 %}
+        <p>
+            Leider haben Sie 0 oder weniger als 0 Punkte erspielt. Ihre Auszahlung beträgt daher 0,5 €.
+        </p>
+    {% else %}
+        <p>
+            Herzlichen Glückwunsch Sie haben {{ participant.payoff }} erspielt.
+            Damit erhalten Sie insgesamt <span id="auszahlung"></span> €.
+        </p>
+    {% endif %}
+
+    <p>
+        Bitte füllen Sie die folgenden Fragen aus.
+    </p>
+
+    <br>
+    <br>
+
+    {% formfield player.crt_epkw %}
+
+    {% formfield player.crt_bev_exp %}
+
+    {% formfield player.crt_conv_exp %}
+
+    {% formfield player.crt_zweitwagen %}
+
+    {% formfield player.crt_flex_nutzung %}
+
+    {% formfield player.crt_flex_anzahl %}
+
+    {% formfield player.crt_flex_absicht %}
+
+    {% formfield player.crt_age %}
+
+    {% formfield player.crt_gender %}
+
+    {% formfield player.crt_bildung %}
+
+    {% formfield player.crt_wohnort %}
+
+    {% formfield player.crt_einkommen %}
+
+    <style type="text/css">
+    tr:hover {background-color: #f5f5f5;}
+    .risk .question{border-bottom: 1px solid #ddd}
+    .risk .td-choice-label{width:14%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    .risk .td-choice-tag{padding:10px 0px 30px 20px;width:14%;text-align:center;vertical-align:center;border-bottom: 1px solid #ddd}
+    </style>
+
+    <table class="risk">
+        <tr class="question">
+            {{ form.crt_attention.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_attention.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_attention.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_attention.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_attention.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_attention.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_attention.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_attention.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_attention.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_attention.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_attention.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_attention.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_attention.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_attention.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_attention.6.tag }}
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    <table class="risk">
+        <tr class="question">
+            {{ form.crt_risiko.label }}
+        </tr>
+        <tr class="choices">
+            <td class="td-choice-label">
+                {{ form.crt_risiko.0.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_risiko.1.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_risiko.2.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_risiko.3.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_risiko.4.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_risiko.5.choice_label }}
+            </td>
+            <td class="td-choice-label">
+                {{ form.crt_risiko.6.choice_label }}
+            </td>
+        </tr>
+        <tr class="tags">
+            <td class="td-choice-tag">
+                {{ form.crt_risiko.0.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_risiko.1.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_risiko.2.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_risiko.3.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_risiko.4.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_risiko.5.tag }}
+            </td>
+            <td class="td-choice-tag">
+                {{ form.crt_risiko.6.tag }}
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    {% next_button %}
+
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(function() {
+            var auszahlung_selector = document.getElementById('auszahlung');
+            final_payoff = {{ participant.payoff|json }};
+
+            if (final_payoff > 0) {
+                final_payoff = (final_payoff*0.005)+0.5;
+                var final_payoff_string = final_payoff.toString();
+                final_payoff_string = final_payoff_string.slice(0, 4);
+                auszahlung_selector.innerHTML = final_payoff_string;
+            }
+        });
+    </script>
+{% endblock %}
